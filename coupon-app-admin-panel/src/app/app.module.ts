@@ -8,6 +8,10 @@ import { VendorComponent } from './vendor/vendor.component';
 import { DealComponent } from './deal/deal.component';
 import { UserComponent } from './user/user.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {UserService} from '../app/services/userservice/user.service';
+import {ProductService} from '../app/services/productservice/product.service';
+import {Urls} from '../../src/app/configs/urls/urls';
 const routes: Route[] = [
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
   {path: 'admin', component: AdminLogInComponent },
@@ -29,9 +33,14 @@ const routes: Route[] = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    UserService,
+    ProductService,
+    Urls
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
